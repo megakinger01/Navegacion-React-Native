@@ -1,10 +1,13 @@
 import React from 'react'
-import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentOptions, DrawerContentScrollView } from '@react-navigation/drawer';
-import { SettingsScreen } from '../screens/SettingsScreen';
-import { StackNavigation } from './StackNavigation';
 import { Image, Text, useWindowDimensions, View } from 'react-native';
-import { styles } from '../theme/appTheme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentOptions, DrawerContentScrollView } from '@react-navigation/drawer';
+
+import { SettingsScreen } from '../screens/SettingsScreen';
+import { colores, styles } from '../theme/appTheme';
+import { Tabs } from './Tabs';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const Drawer = createDrawerNavigator();
@@ -18,7 +21,7 @@ export const MenuLateral = () => {
       drawerType={width >= 768 ? 'permanent' : 'front'}
       drawerContent={(props) => <MenuInterno {...props} />}
     >
-      <Drawer.Screen name="StackNavigation" component={StackNavigation} />
+      <Drawer.Screen name="tabs" component={ Tabs } />
       <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
     </Drawer.Navigator>
   );
@@ -39,18 +42,23 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps<DrawerContentOp
       <View style={styles.menuContainer}>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate('StackNavigation')}
-          style={styles.menuBtn}
-          >
-          <Text style={styles.textoMenu}>StackNavigation</Text>
+          onPress={() => navigation.navigate('tabs')}
+          style={{...styles.menuBtn, flexDirection:'row'}}
+        >
+
+          <Icon  name='compass-outline'  size={23} color={colores.primary} /> 
+          <Text style={styles.textoMenu}> Navegacion</Text>
+
         </TouchableOpacity>
 
 
         <TouchableOpacity
           onPress={() => navigation.navigate('SettingsScreen')}
-          style={styles.menuBtn}
-          >
-          <Text style={styles.textoMenu}> SettingsScreen</Text>
+          style={{...styles.menuBtn, flexDirection:'row'}}
+        >  
+          <Icon  name='cog-outline'  size={23} color={colores.primary} />  
+          <Text style={styles.textoMenu}> Ajustes</Text>
+
         </TouchableOpacity>
 
       </View>
