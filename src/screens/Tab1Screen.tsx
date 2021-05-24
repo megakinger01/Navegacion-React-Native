@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Text, View } from 'react-native'
 import { styles } from '../theme/appTheme'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { TouchableIcon } from '../components/TouchableIcon';
 
 
 
@@ -18,8 +19,12 @@ export const Tab1Screen = () => {
             </Text>
 
             <Text>
-                <Icon name="airplane-outline" size={30} color="#900" />
-                <Icon name="airplane-outline" size={30} color="#900" />
+                <TouchableIcon iconName="airplane-outline"  />
+                <TouchableIcon iconName="airplane-outline"  />
+                <TouchableIcon iconName="airplane-outline"  />
+                <TouchableIcon iconName="airplane-outline"  />
+                <TouchableIcon iconName="airplane-outline"  />
+                <TouchableIcon iconName="airplane-outline"  />
             </Text>
         </View>
     )

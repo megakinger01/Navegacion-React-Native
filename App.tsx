@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { MenuLateral } from './src/navigation/MenuLateral';
 // import { MenuLateralBasico } from './src/navigation/MenuLateralBasico';
 // import { StackNavigation } from './src/navigation/StackNavigation';
+import { AuthProvider } from './src/context/AuthContext';
 
 
 
@@ -11,9 +12,19 @@ import { MenuLateral } from './src/navigation/MenuLateral';
 export const App = () => {
   return (
     <NavigationContainer>
+      <AppState>
         <MenuLateral />
         {/* <MenuLateralBasico />  */}
-       {/* <StackNavigation /> */}
+        {/* <StackNavigation /> */}
+      </AppState>
     </NavigationContainer>
+  )
+}
+
+const AppState = ({ children }: any) => {
+  return (
+    <AuthProvider>
+      {children}
+    </AuthProvider>
   )
 }
